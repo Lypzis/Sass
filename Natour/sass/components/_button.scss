@@ -1,0 +1,56 @@
+.btn {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;  /* So the box model works as if is a block element and can receive padding, height..., */ 
+                            /* and also is treated as a text in the text-box :D, by default it is 'inline' */
+    &:link, &:visited {
+        border-radius: 10rem;
+        transition: all .2s; /* all properties will animate on 0.2s. */ 
+        position: relative;
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        transform: translateY(-.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2); /* nice shadow appears*/
+    }
+
+    &:active {
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2); /* nice shadow is lowered to cause the impression of pressing */
+    }
+
+    /* treated as a child of the button */
+    &::after { /* An element that looks exactly like what we have, but behind it */
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1; /* definetely behind the button now :D */
+        transition: all .4s;
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-gray-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+
+        &:hover::after { /* only appear 'after' on hover behind the button giving the impression that it is the button */
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0; /* will give waves effect, as it disappear */
+        }
+    }
+
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        animation-fill-mode: backwards; /* applies starting animation properties before the animation starts */
+    }
+}
