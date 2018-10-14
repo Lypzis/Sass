@@ -4,7 +4,6 @@
   "description": "lecture project",
   "main": "index.js",
   "scripts": {
-    "start": "yarn livereload && yarn compile:sass",
     "livereload": "livereload -p 4000",
     "compile:sass": "node-sass -w ./sass/main.scss ./css/style.css"
   },
