@@ -1,7 +1,6 @@
 .row {
     max-width: $grid-width; // maximum width achievable, meaning that even if more is available
                         // the row won't get larger than this value.
-    background-color: #eee;
     margin: 0 auto; // center it, making the left and right values equals;
     
     // select everything except the last child
@@ -13,7 +12,6 @@
 
     // attribute here, select all elements that starts(^) with "col-";
     [class^="col-"] {
-        background-color: orangered;
         float: left;
 
         &:not(:last-child){

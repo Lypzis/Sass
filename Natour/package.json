@@ -4,6 +4,7 @@
   "description": "lecture project",
   "main": "index.js",
   "scripts": {
+    "start": "livereload -p 4000 & node-sass -w ./sass/main.scss ./css/style.css",
     "livereload": "livereload -p 4000",
     "compile:sass": "node-sass -w ./sass/main.scss ./css/style.css"
   },
