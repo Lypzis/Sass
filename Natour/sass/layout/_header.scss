@@ -8,6 +8,7 @@
     background-position: top;
     /* geometrical polygon, x and y are its corners in clockwise starting from top-left (0, 0) coordinate */ 
     /* can make any form, give enough coordinate dots */ 
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); 
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); 
     position: relative;
 
