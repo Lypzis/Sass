@@ -14,6 +14,11 @@
     &:hover {
         transform: translateY(-.3rem);
         box-shadow: 0 1rem 2rem rgba($color-black, .2); /* nice shadow appears*/
+    
+        &::after { /* only appear 'after' on hover behind the button giving the impression that it is the button */
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0; /* will give waves effect, as it disappear */
+        }
     }
 
     &:active {
@@ -42,10 +47,14 @@
         &::after {
             background-color: $color-white;
         }
+    }
 
-        &:hover::after { /* only appear 'after' on hover behind the button giving the impression that it is the button */
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0; /* will give waves effect, as it disappear */
+    &--green {
+        background-color: $color-primary-light;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary-light;
         }
     }
 
