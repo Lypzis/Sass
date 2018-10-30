@@ -1,0 +1,63 @@
+.story {
+    widows: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: $color-white;
+    border-radius: .3rem;
+    padding: 9rem;
+    padding-left: 9rem; 
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    & > * {
+        transform: skewX(12deg);
+    }
+
+    &__shape {
+        position: relative;
+        width: 15rem;
+        height: 15rem;
+        background-color: orangered;
+        float: left; // in order to make the rest of the content to float around it.
+        
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%); // an exact circle, needs height, widht and float in order to work.
+    
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%); // so background only affect within the shape
+    
+        transform: translateX(-3rem) skewX(12deg); // best way to position floated stuff
+    }
+
+    &__img {
+        transition: all .5s;
+        height: 100%; // the 100% of the parent, making it fit the circle
+        transform: translateX(-4rem) scale(1.4);
+        backface-visibility: hidden;
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden;
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(.3rem) brightness(80%); // filters :D, adds blur and makes the image darker.
+    }
+}
+
