@@ -14,6 +14,7 @@
         border: none;
         border-bottom: .3rem solid transparent; // Added in order to remove the "grow" effect it will receive when focused
         width: 90%;
+        transition: all .3s;
 
         &:focus {
             outline: none; // IMPORTANT! if set to none, another way to let people know it is 'focused' must be given for acessibility reasons!
@@ -48,4 +49,54 @@
         visibility: hidden;
         transform: translateY(-4rem);
     }
+
+    // RADIO BUTTON STYLING, same lo
+    &__radio-group {
+        display: inline-block;
+        width: 49%;
+    }
+
+    &__radio-label {
+        font-size: $default-font-size;
+        cursor: pointer;
+        position: relative;
+        padding-left: 4rem;
+    }
+
+    &__radio-button {
+        height: 3rem;
+        width: 3rem;
+        border: .5rem solid $color-primary;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -.7rem;
+
+        &::after {
+            content: "";
+            display: block;
+            height: 1.4rem;
+            width: 1.4rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $color-primary;
+            opacity: 0;
+            transition: opacity .2s;
+        }
+    }
+
+    &__radio-input {
+        display: none;
+    }
+
+    // when the 'radio button' is checked, it select its sibling 'radio label' wich select its child radio-button
+    &__radio-input:checked ~ &__radio-label &__radio-button::after{
+        opacity: 1;
+    }
+    ////////////////////////////////////////////////
+
 }
