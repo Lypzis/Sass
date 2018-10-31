@@ -1,0 +1,51 @@
+.form {
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__input {
+        display: block;
+        font-size: 1.5rem;
+        font-family: inherit; // inputs don't inherit attributes by defalt :(
+        color: inherit;
+        padding: 1.5rem 2rem; // always a bit more on the sides
+        border-radius: .2rem;
+        background-color: rgba($color-white, .5);
+        border: none;
+        border-bottom: .3rem solid transparent; // Added in order to remove the "grow" effect it will receive when focused
+        width: 90%;
+
+        &:focus {
+            outline: none; // IMPORTANT! if set to none, another way to let people know it is 'focused' must be given for acessibility reasons!
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: .3rem solid $color-primary;
+        
+            &:invalid {
+                outline: none;
+                border-bottom: .3rem solid $color-secondary-dark;
+            }
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-gray-dark-2;
+        }
+    }
+
+    // does a nice animation when the typing starts
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        display: block;
+        transition: all .3s;
+    }
+
+    // is in effect while the placeholder is shown
+    // '+' is the adjacent sibling selector, if there are more levels between them, use '~'
+    &__input:placeholder-shown + &__label{ // the order that they are written needs to be the same in the html
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+}

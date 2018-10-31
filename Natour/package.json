@@ -4,13 +4,14 @@
   "description": "lecture project",
   "main": "index.js",
   "scripts": {
-    "start": "livereload -p 4000 & sass --watch ./sass/main.scss ./css/style.css",
+    "start": "concurrently \"livereload -p 4000\" \"sass --watch ./sass/main.scss ./css/style.css\" --kill-others",
     "livereload": "livereload -p 4000",
     "compile:sass": "sass --watch ./sass/main.scss ./css/style.css"
   },
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "concurrently": "^4.0.1",
     "sass": "^1.14.3"
   }
 }
