@@ -126,12 +126,10 @@
 
     // BACK SIDE STYLING
     &__cta {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         text-align: center;
         width: 90%; // fix text inside the button;
+
+        @include centerAbsoluteXY;
     }
 
     &__price-box {

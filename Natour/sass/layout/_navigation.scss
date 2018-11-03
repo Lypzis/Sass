@@ -1,0 +1,83 @@
+.navigation {
+
+    // REMEMBER: this cannot be styled, so it is hidden and only its functionality 
+    // will still serve its purpose, as it is bound to a label(which can be styled :DDD);
+    &__checkbox {
+        display: none;
+    }
+
+    &__button {
+        background-color: $color-white;
+        height: 7rem;
+        width: 7rem; // bigger than the navigation__background to completely cover it
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+        border-radius: 50%;
+        z-index: 2000;
+    }
+
+    &__background {
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed; // gets fixed on the page when scrolling
+        top: 6.5rem;
+        right: 6.5rem;
+        // The radial gradient starts from the middle of the element and expands from it
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        // REMEMBER: z-index only works if position is defined, like in this case where it is set as 'fixed'
+        z-index: 1000;
+
+        transform: scale(80);
+    }
+
+    &__nav {
+        height: 100vh; // the entire page;
+        width: 100%;
+        position: fixed; // it is also absolute;
+        top: 0;
+        right: 0;
+        z-index: 1500;
+    }
+
+    &__list {
+        list-style: none;
+        text-align: center;
+
+        @include centerAbsoluteXY;
+    }
+
+    &__item {
+        margin: 1.5rem;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            display: inline-block; // to receive the following things that change margin and padding.
+            font-size: 3rem; // font-size is the size of the letter.
+            font-weight: 300;
+            padding: 1rem 2rem;
+            color: $color-white;
+            text-transform: uppercase;
+            text-decoration: none;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%); // solid gradient
+            background-size: 230%; // affects the background image size hehe :D
+            transition: all 0.4s;
+            backface-visibility: hidden;
+        }
+
+        span {
+            display: inline-block;
+            margin-right: 1rem;
+        }
+
+        &:hover,
+        &:active {
+            transform: translateX(1rem);
+            color: $color-primary;
+            background-position: 100%; // and here we reajust the position of the background making the 'replacement' background effect;
+        }
+    }
+}
