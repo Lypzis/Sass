@@ -15,6 +15,8 @@
         right: 6rem;
         border-radius: 50%;
         z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color-black, .3);
+        cursor: pointer;
     }
 
     &__background {
@@ -29,16 +31,23 @@
         // REMEMBER: z-index only works if position is defined, like in this case where it is set as 'fixed'
         z-index: 1000;
 
-        transform: scale(80);
+        -webkit-transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1); // check easings.net
     }
 
     &__nav {
         height: 100vh; // the entire page;
-        width: 100%;
         position: fixed; // it is also absolute;
         top: 0;
-        right: 0;
         z-index: 1500;
+
+        // making the nav invisible/"turned off"
+        opacity: 0;
+        width: 0;
+        right: -10%;
+
+        -webkit-transition: opacity .9s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition: opacity .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
     &__list {
@@ -79,5 +88,18 @@
             color: $color-primary;
             background-position: 100%; // and here we reajust the position of the background making the 'replacement' background effect;
         }
+    }
+
+    // when checkbox checked, background expands.
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+        //animation: scaleCoverScreen 1s ease-out;
+    }
+
+    // when checkbox checked, show the nav list. :D
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
+        right: 0;
     }
 }

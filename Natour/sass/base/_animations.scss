@@ -44,3 +44,25 @@
         transform: translate(0);  
     }
 }
+
+@keyframes scaleCoverScreen { 
+    0% {
+        transform: scale(0);
+    }
+
+    20% {
+        transform: scale(20); 
+    }
+
+    40% {
+        transform: scale(40); 
+    }
+
+    60% {
+        transform: scale(60); 
+    }
+
+    100% {
+        transform: scale(80); 
+    }
+}
