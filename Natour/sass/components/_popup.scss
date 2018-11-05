@@ -1,0 +1,91 @@
+.popup {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    background-color: rgba($color-black, .8);
+    z-index: 2500; // is inherited to children
+    top: 0;
+    left: 0;
+    // replaces 'display: none' which canot be animated
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    &__content {
+        background-color: $color-white;
+        //height: 50rem; just for testing;
+        width: 75%;
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        border-radius: .3rem;
+        display: table; // the browser will automatically give the same height to the 'table-cells'
+        overflow: hidden; // ;D for images overlaping the border;
+
+        @include centerAbsoluteXY;
+        // scale animation as the popup opens.
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.25);
+        transition: all .5s .2s;
+    }
+
+    &__left {
+        width: 33.333333%;
+        display: table-cell;
+    }
+
+    &__right {
+        width: 66.6666667%;
+        display: table-cell;
+        vertical-align: middle; // only usable on table-cells
+        padding: 3rem 5rem;
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+    }
+
+    &__text {
+        text-align: justify;
+        font-size: 1.4rem;
+
+        column-count: 2; // number of columns
+        column-gap: 4rem; // space between columns
+        column-rule: .1rem solid $color-gray-light-2; // a divisory line
+
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto; // place hyphens, the language must be defined in the html for this to work.
+    }
+
+    // OPEN STATES
+    // after the anchor is set for the popup...
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    // makes the popup appear from the middle of the '&__content'
+    &:target &__content {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__close {
+        &:link,
+        &:visited {
+            color: $color-gray-dark;
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            display: inline-block;
+            text-decoration: none;
+            transition: all .2s;
+            line-height: 1; // minor position fix
+        }
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}
