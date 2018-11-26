@@ -13,3 +13,53 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+// MEDIA QUERY MANAGER
+/*
+0 - 600px:     Phone
+601 - 900px:   Tablet Portrait
+901 - 1200px:  Tablet Landscape
+
+[1201 - 1800px: Desktops (Default Styles apply)]
+
+> 1801px:      Big Desktops
+*/
+
+/*
+$breakpoint argument choices:
+- phone 
+- tab-port  900px
+- tab-land
+- big-desktop
+
+1em = 16px
+*/
+@mixin respond($breakpoint) {
+    // 'rem' fails in media queries, so instead use 'em'
+    @if $breakpoint == phone {
+        // 600px
+        @media (max-width: 37.5em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
+    }
+    @if $breakpoint == tab-port {
+        // 900px;
+        @media (max-width: 56.25em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
+    }
+    @if $breakpoint == tab-land {
+        // 1200px;
+        @media (max-width: 75em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
+    }
+    @if $breakpoint == big-desktop {
+        // min: from 1800 and beyond
+        // 1800px;
+        @media (min-width: 112.5em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
+    }
+}
+
+
+
+
+
+
+
+
+
