@@ -14,6 +14,8 @@ $breakpoint argument choices:
 - tab-land
 - big-desktop
 
+ORDER: Base + typography > general layout + grid > page layout > components
+
 1em = 16px
 */
 *,
@@ -41,11 +43,18 @@ html {
 @media (max-width: 75em) {
   html {
     font-size: 56.25%;
+    padding: 0;
+    /* 30px; gives a nice white margin around body of the web-page :D */
   }
 }
 @media (max-width: 56.25em) {
   html {
     font-size: 50%;
+  }
+}
+@media (max-width: 37.5em) {
+  html {
+    font-size: 30%;
   }
 }
 @media (min-width: 112.5em) {
@@ -56,6 +65,14 @@ html {
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+  /* 30px; gives a nice white margin around body of the web-page :D */
+}
+@media (max-width: 56.25em) {
+  body {
+    padding: 0;
+    /* 30px; gives a nice white margin around body of the web-page :D */
+  }
 }
 
 body {
@@ -64,8 +81,6 @@ body {
   line-height: 1.7;
   color: #777;
   /* all text will be of this color */
-  padding: 3rem;
-  /* 30px; gives a nice white margin around body of the web-page :D */
 }
 
 .heading-primary {
@@ -89,6 +104,12 @@ body {
   animation-iteration-count: 3;
   */
 }
+@media (max-width: 37.5em) {
+  .heading-primary--main {
+    letter-spacing: 1rem;
+    font-size: 7rem;
+  }
+}
 .heading-primary--sub {
   display: block;
   font-size: 2rem;
@@ -96,6 +117,11 @@ body {
   letter-spacing: 1.75rem;
   /* shorter way */
   animation: moveInRight 1s ease-out;
+}
+@media (max-width: 37.5em) {
+  .heading-primary--sub {
+    letter-spacing: 0.5em;
+  }
 }
 
 .heading-secondary {
@@ -109,6 +135,16 @@ body {
   color: transparent;
   letter-spacing: 0.2rem;
   transition: all 0.2s;
+}
+@media (max-width: 56.25em) {
+  .heading-secondary {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 37.5em) {
+  .heading-secondary {
+    font-size: 2.5rem;
+  }
 }
 .heading-secondary:hover {
   transform: skewY(2deg) skewX(15deg) scale(1.1);
@@ -340,7 +376,6 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
   font-size: 1.5rem;
   padding: 2.5rem;
-  margin: 50% 0;
   text-align: center;
   border-radius: 0.3rem;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
@@ -717,6 +752,18 @@ body {
   cursor: pointer;
   text-align: center;
 }
+@media (max-width: 56.25em) {
+  .navigation__button {
+    top: 4rem;
+    right: 4rem;
+  }
+}
+@media (max-width: 37.5em) {
+  .navigation__button {
+    top: 2rem;
+    right: 2rem;
+  }
+}
 .navigation__background {
   height: 6rem;
   width: 6rem;
@@ -728,6 +775,18 @@ body {
   z-index: 1000;
   -webkit-transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+@media (max-width: 56.25em) {
+  .navigation__background {
+    top: 4.5rem;
+    right: 4.5rem;
+  }
+}
+@media (max-width: 37.5em) {
+  .navigation__background {
+    top: 2.5rem;
+    right: 2.5rem;
+  }
 }
 .navigation__nav {
   height: 100vh;
@@ -834,6 +893,12 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative;
 }
+@media (max-width: 37.5em) {
+  .header {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+  }
+}
 .header__logo-box {
   /* The absolute positioning here has the .header as its reference relative parent position */
   position: absolute;
@@ -860,6 +925,17 @@ body {
 .row:not(:last-child) {
   margin-bottom: 8rem;
 }
+@media (max-width: 56.25em) {
+  .row:not(:last-child) {
+    margin-bottom: 6rem;
+  }
+}
+@media (max-width: 56.25em) {
+  .row {
+    max-width: 50rem;
+    padding: 0 3rem;
+  }
+}
 .row::after {
   content: "";
   display: table;
@@ -870,6 +946,17 @@ body {
 }
 .row [class^=col-]:not(:last-child) {
   margin-right: 6rem;
+}
+@media (max-width: 56.25em) {
+  .row [class^=col-]:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 6rem;
+  }
+}
+@media (max-width: 56.25em) {
+  .row [class^=col-] {
+    width: 100% !important;
+  }
 }
 .row .col-1-of-2 {
   width: calc((100% - 6rem) / 2);
@@ -896,6 +983,11 @@ body {
   font-size: 1.3rem;
   color: #f7f7f7;
 }
+@media (max-width: 56.25em) {
+  .footer {
+    padding: 8rem 0;
+  }
+}
 .footer__logo-box {
   text-align: center;
   margin-bottom: 8rem;
@@ -908,6 +1000,12 @@ body {
   border-top: 0.1rem solid #777;
   padding-top: 2rem;
   display: inline-block;
+}
+@media (max-width: 56.25em) {
+  .footer__navigation {
+    width: 100%;
+    text-align: center;
+  }
 }
 .footer__list {
   list-style: none;
@@ -936,6 +1034,12 @@ body {
   padding-top: 2rem;
   width: 80%;
   float: right;
+}
+@media (max-width: 56.25em) {
+  .footer__copyright {
+    width: 100%;
+    float: none;
+  }
 }
 
 .section-about {

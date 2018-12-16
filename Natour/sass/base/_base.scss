@@ -20,9 +20,10 @@ html {
     } 
     */
 
-    // REMEMBER: cascade, always the large ones first
+    // REMEMBER: cascade, always the large ones first in desktop first
     @include respond(tab-land) {
         font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+        padding: 0; /* 30px; gives a nice white margin around body of the web-page :D */
     }
 
     @include respond(tab-port) {
@@ -30,8 +31,9 @@ html {
     }
 
     @include respond(phone) {
-        font-size: 30%;  // 1rem = 4.8px, 8/16 = 50%
+        font-size: 30%;  // 1rem = 4.8px, 8/16 = 30%
     }
+    /////////////////////////////////////////////////////////////////////
    
     @include respond(big-desktop) {
         font-size: 75%;    // 1rem = 12, 12/16 = 75
@@ -40,4 +42,9 @@ html {
 
 body { 
     box-sizing: border-box;
+    padding: 3rem; /* 30px; gives a nice white margin around body of the web-page :D */
+
+    @include respond(tab-port) {
+        padding: 0; /* 30px; gives a nice white margin around body of the web-page :D */
+    }
 }

@@ -3,7 +3,6 @@ body {
     font-weight: 400;
     line-height: 1.7;
     color: $color-gray-dark; /* all text will be of this color */
-    padding: 3rem; /* 30px; gives a nice white margin around body of the web-page :D */
 }
 
 .heading-primary {
@@ -29,6 +28,11 @@ body {
         animation-delay: 3s;
         animation-iteration-count: 3;
         */
+
+        @include respond(phone) {
+            letter-spacing: 1rem;
+            font-size: 7rem;
+        }
     }
 
     &--sub {
@@ -39,6 +43,10 @@ body {
 
         /* shorter way */
         animation: moveInRight 1s ease-out;
+
+        @include respond(phone) {
+            letter-spacing: .5em;
+        }
     }
 }
 
@@ -55,6 +63,14 @@ body {
 
     letter-spacing: .2rem;
     transition: all .2s;
+
+    @include respond(tab-port) {
+        font-size: 3rem;
+    }
+
+    @include respond(phone) {
+        font-size: 2.5rem;
+    }
 
     &:hover {
         transform: skewY(2deg) skewX(15deg) scale(1.1);
