@@ -1,16 +1,29 @@
 .story {
-    widows: 75%;
+    width: 75%;
     margin: 0 auto;
     box-shadow: 0 3rem 6rem rgba($color-black, .1);
     background-color: rgba($color-white, .6);
     border-radius: .3rem;
-    padding: 9rem;
+    padding: 6rem;
     padding-left: 9rem; 
     font-size: $default-font-size;
     transform: skewX(-12deg);
 
+    @include respond(tab-port){
+        width: 100%;
+        padding: 4rem 4rem 4rem 7rem;
+    }
+
+    @include respond(phone) {
+        transform: skewX(0);
+    }
+
     & > * {
         transform: skewX(12deg);
+
+        @include respond(phone) {
+            transform: skewX(0);
+        }
     }
 
     &__shape {
@@ -26,6 +39,10 @@
         clip-path: circle(50% at 50% 50%); // so background only affect within the shape
     
         transform: translateX(-3rem) skewX(12deg); // best way to position floated stuff
+    
+        @include respond(phone) {
+            transform: translateX(-2rem) skewX(0);
+        }
     }
 
     &__img {
