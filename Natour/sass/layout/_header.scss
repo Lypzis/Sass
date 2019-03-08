@@ -1,19 +1,37 @@
 .header {
-    height: 95vh; /* viewport height */
+    height: 85vh; /* viewport height */
     /* linear-gradient, starts with one color to the left and as it goes to the right changes the color */
     background-image: linear-gradient(to right bottom,rgba($color-primary-light, .801),
                     rgba($color-primary-dark, .801)),
-                    url(../img/hero.jpg);
+                    url(../img/hero-small.jpg);
     background-size: cover;
     background-position: top;
-    /* geometrical polygon, x and y are its corners in clockwise starting from top-left (0, 0) coordinate */ 
-    /* can make any form, give enough coordinate dots */ 
+    
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); 
+    -moz-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); 
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); 
     position: relative;
 
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)){
+        /* geometrical polygon, x and y are its corners in clockwise starting from top-left (0, 0) coordinate */ 
+        /* can make any form, give enough coordinate dots */ 
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        height: 95vh; /* viewport height */ 
+    }
+
+    // dpi = dots per inch, if resolutions is higher than 192dpi AND width higher than 600px OR 2000px, use this background-image instead.
+    @media (min-resolution: 192dpi) and (min-width: 37.5em),
+            (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), // for safari
+            (min-width: 125em) {
+        background-image: linear-gradient(to right bottom,rgba($color-primary-light, .801),
+        rgba($color-primary-dark, .801)),
+        url(../img/hero.jpg);
+    }
+
     @include respond(phone) {
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%); 
+        -moz-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%); 
         clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%); 
     }
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="css/icon-font.css">
+    <!-- <link rel="stylesheet" href="css/icon-font.css"> -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" type="image/png" href="img/favicon.png">
 
@@ -17,7 +17,8 @@
 
     <div class="navigation">
         <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
-        <label for="navi-toggle" class="navigation__button"> <!-- "checkbox hack" -->
+        <label for="navi-toggle" class="navigation__button">
+            <!-- "checkbox hack" -->
             <span class="navigation__icon"></span>
         </label>
 
@@ -76,9 +77,24 @@
                 </div>
                 <div class="col-1-of-2">
                     <div class="composition">
-                        <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
-                        <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
-                        <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+
+                        <!-- Resolution and Density Switching, it uses the width and sizes attribute(vw will be imageW/screenW) of the image to know what to use.
+                        The src there is just for older browsers, other cases it will be ignored and use srcset instead. -->
+                        <img srcset="./img/nat-1.jpg 300w, ./img/nat-1-large.jpg 1000w"
+                            sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 18.75em" alt="Photo 1"
+                            class="composition__photo composition__photo--p1" src="./img/nat-1-large.jpg">
+                        <img srcset="./img/nat-2.jpg 300w, ./img/nat-2-large.jpg 1000w"
+                            sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 18.75em" alt="Photo 2"
+                            class="composition__photo composition__photo--p2" src="./img/nat-2-large.jpg">
+                        <img srcset="./img/nat-3.jpg 300w, ./img/nat-3-large.jpg 1000w"  
+                            sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 18.75em" alt="Photo 3"
+                            class="composition__photo composition__photo--p3" src="./img/nat-3-large.jpg">
+
+                        <!--
+                        <img src="./img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
+                        <img src="./img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
+                        <img src="./img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                        -->
                     </div>
                 </div>
             </div>
@@ -362,7 +378,18 @@
 
     <footer class="footer">
         <div class="footer__logo-box">
-            <img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo">
+
+            <!-- Art Direction we use picture and source element, the browser will choose the fitting image inside the picture element options -->
+            <picture class="footer__logo">
+                <!-- for mobile -->
+                <source srcset="./img/logo-green-small-1x.png 1x, ./img/logo-green-small-2x 2x"
+                    media="(max-width: 37.5em)">
+                <!-- srcset for image Density Switching, The browser decides which one to choose :D -->
+                <img srcset="./img/logo-green-1x.png 1x, ./img/logo-green-2x.png 2x" alt="Full logo"
+                    src="./img/logo-green-2x.png">
+            </picture>
+
+
         </div>
         <div class="row">
             <div class="col-1-of-2">
@@ -378,7 +405,10 @@
             </div>
             <div class="col-1-of-2">
                 <p class="footer__copyright">
-                    Built by <a href="#" class="footer__link">Victor V. Piccoli</a> from the online course <a href="#" class="footer__link">Advanced CSS and Sass</a>. Copyright &copy; by <a href="#" class="footer__link">Jonas Schmedtmann</a>. You are 100% allowed to use this webpage for both personal and commercial use, but NOT to claim it as your own design.
+                    Built by <a href="#" class="footer__link">Victor V. Piccoli</a> from the online course <a href="#"
+                        class="footer__link">Advanced CSS and Sass</a>. Copyright &copy; by <a href="#"
+                        class="footer__link">Jonas Schmedtmann</a>. You are 100% allowed to use this webpage for both
+                    personal and commercial use, but NOT to claim it as your own design.
                 </p>
             </div>
         </div>
@@ -394,10 +424,18 @@
                 <a href="#section-tours" class="popup__close">&times;</a>
                 <h2 class="heading-secondary u-margin-bottom-small">Start booking now</h2>
                 <h3 class="heading-tertiary u-margin-bottom-small">Important &ndash; Please read the terms</h3>
-                <p class="popup__text u-margin-bottom-medium">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam optio sunt enim distinctio ipsum cumque, quod ducimus unde quasi? Minus ut, pariatur dicta reiciendis temporibus debitis excepturi est nostrum? Earum?
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam optio sunt enim distinctio ipsum cumque, quod ducimus unde quasi? Minus ut, pariatur dicta reiciendis temporibus debitis excepturi est nostrum? Earum?
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam optio sunt enim distinctio ipsum cumque, quod ducimus unde quasi? Minus ut, pariatur dicta reiciendis temporibus debitis excepturi est nostrum? Earum?
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam optio sunt enim distinctio ipsum cumque, quod ducimus unde quasi? Minus ut, pariatur dicta reiciendis temporibus debitis excepturi est nostrum? Earum?
+                <p class="popup__text u-margin-bottom-medium">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Numquam optio sunt enim distinctio ipsum cumque, quod ducimus unde quasi? Minus ut, pariatur dicta
+                    reiciendis temporibus debitis excepturi est nostrum? Earum?
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam optio sunt enim distinctio ipsum
+                    cumque, quod ducimus unde quasi? Minus ut, pariatur dicta reiciendis temporibus debitis excepturi
+                    est nostrum? Earum?
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam optio sunt enim distinctio ipsum
+                    cumque, quod ducimus unde quasi? Minus ut, pariatur dicta reiciendis temporibus debitis excepturi
+                    est nostrum? Earum?
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam optio sunt enim distinctio ipsum
+                    cumque, quod ducimus unde quasi? Minus ut, pariatur dicta reiciendis temporibus debitis excepturi
+                    est nostrum? Earum?
                 </p>
                 <a href="#" class="btn btn--green">Book now</a>
             </div>

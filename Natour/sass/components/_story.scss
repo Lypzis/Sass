@@ -31,14 +31,20 @@
         width: 15rem;
         height: 15rem;
         float: left; // in order to make the rest of the content to float around it.
-        
-        -webkit-shape-outside: circle(50% at 50% 50%);
-        shape-outside: circle(50% at 50% 50%); // an exact circle, needs height, widht and float in order to work.
-    
-        -webkit-clip-path: circle(50% at 50% 50%);
-        clip-path: circle(50% at 50% 50%); // so background only affect within the shape
-    
+        border-radius: 50%; // circle
         transform: translateX(-3rem) skewX(12deg); // best way to position floated stuff
+        overflow: hidden; // hides outside part of the image.
+
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)){
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%); // so background only affect within the shape
+        }
+
+        @supports (shape-outside: circle(50% at 50% 50%)) or (-webkit-shape-outside: circle(50% at 50% 50%)){
+            -webkit-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%); // an exact circle, needs height, widht and float in order to work.
+            border-radius: 0;
+        }
     
         @include respond(phone) {
             transform: translateX(-2rem) skewX(0);
