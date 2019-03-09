@@ -40,20 +40,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
     // 'rem' fails in media queries, so instead use 'em'
     @if $breakpoint == phone {
         // 600px
-        @media (max-width: 37.5em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
+        @media only screen and (max-width: 37.5em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
     }
     @if $breakpoint == tab-port {
         // 900px;
-        @media (max-width: 56.25em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
+        @media only screen and (max-width: 56.25em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
     }
     @if $breakpoint == tab-land {
         // 1200px;
-        @media (max-width: 75em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
+        @media only screen and (max-width: 75em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
     }
     @if $breakpoint == big-desktop {
         // min: from 1800 and beyond
         // 1800px;
-        @media (min-width: 112.5em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
+        @media only screen and (min-width: 112.5em) { @content }; // all "@content" passed where the mixin is used will be affect by this media query rule.
     }
 }
 

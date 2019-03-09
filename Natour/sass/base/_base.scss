@@ -48,3 +48,8 @@ body {
         padding: 0; /* 30px; gives a nice white margin around body of the web-page :D */
     }
 }
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}

@@ -150,7 +150,8 @@
     }
 
     // This will get kind of a complete rewrite for mobile
-    @include respond(tab-port) {
+    @media only screen and (max-width: 56.25em), 
+            only screen and (hover: none) {  // If hover is not available(mobile), also apply this media query
 
         height: auto; // fix perspective issue now that the position of a side is absolute;
         border-radius: .3rem;
