@@ -26,10 +26,18 @@
     background-color: var(--color-grey-dark-1);
 
     flex: 0 0 18%;
+
+    display: flex;
+    flex-direction: column;
+    //along with 'display' and 'flex-direction', generates a space between elements along the vertical axis in the container.
+    justify-content: space-between;
 }
 
 .hotel-view {
     background-color: #fff;
+    
+    // TEST
+    height: 80rem;
 
     flex: 1; // uses all remaining available space.
 }
