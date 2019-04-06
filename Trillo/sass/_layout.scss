@@ -10,7 +10,7 @@
     font-size: 1.4rem;
     height: 7rem;
     background-color: #fff;
-    border-bottom: var(--bottom-line);
+    border-bottom: var(--line);
 
     display: flex;
     justify-content: space-between;
@@ -44,7 +44,7 @@
     display: flex;
     padding: 4.5rem;
     background-color: var(--color-grey-light-1);
-    border-bottom: var(--bottom-line);
+    border-bottom: var(--line);
 }
 
 .description {

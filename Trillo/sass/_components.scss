@@ -213,7 +213,7 @@
 .overview {
     display: flex;
     align-items: center;
-    border-bottom: var(--bottom-line);
+    border-bottom: var(--line);
 
     &__heading {
         font-size: 2.25rem;
@@ -296,6 +296,80 @@
         animation: pulsate 1s infinite; // infinite animation while button is focused
     }
 }
+
+
+////////////////////////////////////////////
+// PARAGRAPH
+.paragraph:not(:last-of-type) { // last of this "type" will not receive margin-bottom
+    margin-bottom: 2rem;
+}
+
+////////////////////////////////////////////
+// LIST
+.list {
+    list-style: none;
+    margin: 3rem 0;
+    padding: 3rem 0;
+    border-top: var(--line);
+    border-bottom: var(--line);
+
+    display: flex;
+    flex-wrap: wrap; // everything gets closer to one another :D
+
+    &__item {
+        width: 50%; // this will divide each item to a side, list done
+        margin-bottom: .7rem;
+    }
+
+    // this is going to insert an svg icon 'before' the list item
+    &__item::before {
+        content: "";
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        margin-right: .7rem;
+
+        // For older browsers! Can't change color of the icon here
+        //background-image: url(../img/SVG/chevron-right.svg);
+        //background-size: cover;
+
+        // For new browsers - masks
+        background-color: var(--color-primary); // set background color
+        // then add the icon as a mask, almost like clipping
+        -webkit-mask-image: url(../img/SVG/chevron-right.svg);
+        mask-image: url(../img/SVG/chevron-right.svg);
+        -webkit-mask-size: cover;
+        mask-size: cover; // fill the space with size readjustment of the icon
+
+    }
+}
+
+////////////////////////////////////////////
+// RECOMMEND
+.recommend {
+    font-size: 1.3rem;
+    color: var(--color-grey-dark-3);
+
+    display: flex;
+    align-items: center;
+
+    &__count {
+        margin-right: auto;
+    }
+
+    &__photo {
+        box-sizing: content-box; // default box size, so it won't shrink when a border is added
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        border: solid #fff .3rem;
+
+        &:not(:last-child) {
+            margin-right: -1.5rem;
+        }
+    }
+}
+
 
 @keyframes pulsate {
     // default appearance

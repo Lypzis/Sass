@@ -129,7 +129,7 @@
 .overview {
   display: flex;
   align-items: center;
-  border-bottom: var(--bottom-line); }
+  border-bottom: var(--line); }
   .overview__heading {
     font-size: 2.25rem;
     font-weight: 300;
@@ -184,6 +184,48 @@
     outline: none;
     animation: pulsate 1s infinite; }
 
+.paragraph:not(:last-of-type) {
+  margin-bottom: 2rem; }
+
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--line);
+  border-bottom: var(--line);
+  display: flex;
+  flex-wrap: wrap; }
+  .list__item {
+    width: 50%;
+    margin-bottom: .7rem; }
+  .list__item::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-right: .7rem;
+    background-color: var(--color-primary);
+    -webkit-mask-image: url(../img/SVG/chevron-right.svg);
+    mask-image: url(../img/SVG/chevron-right.svg);
+    -webkit-mask-size: cover;
+    mask-size: cover; }
+
+.recommend {
+  font-size: 1.3rem;
+  color: var(--color-grey-dark-3);
+  display: flex;
+  align-items: center; }
+  .recommend__count {
+    margin-right: auto; }
+  .recommend__photo {
+    box-sizing: content-box;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: solid #fff .3rem; }
+    .recommend__photo:not(:last-child) {
+      margin-right: -1.5rem; }
+
 @keyframes pulsate {
   0% {
     transform: scale(1);
@@ -206,7 +248,7 @@
   font-size: 1.4rem;
   height: 7rem;
   background-color: #fff;
-  border-bottom: var(--bottom-line);
+  border-bottom: var(--line);
   display: flex;
   justify-content: space-between;
   align-items: center; }
@@ -229,7 +271,7 @@
   display: flex;
   padding: 4.5rem;
   background-color: var(--color-grey-light-1);
-  border-bottom: var(--bottom-line); }
+  border-bottom: var(--line); }
 
 .description {
   font-size: 1.4rem;
@@ -272,9 +314,8 @@ Grey dark 3: #999
   --color-grey-dark-2: #777;
   --color-grey-dark-3: #999;
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
-  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, .06)
-
-    --bottom-line: 1px solid var(--color-grey-light-2); }
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, .06);
+  --line: 1px solid var(--color-grey-light-2); }
 
 /* GLOBAL */
 * {
