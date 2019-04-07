@@ -60,4 +60,8 @@
 .user-reviews {
     //background: yellowgreen;
     flex: 1; // occupies the reamining space;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
