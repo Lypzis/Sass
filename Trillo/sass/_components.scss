@@ -17,6 +17,12 @@
     justify-content: center; // centers in the x axis
     align-items: center; // centers in the y axis, makes almost no difference here.
 
+    @media only screen and (max-width: $bp-smallest) {
+        order: 1;
+        flex: 0 0 100%;
+        background-color: var(--color-grey-light-2);
+    }
+
     &__input {
         font-family: inherit;
         font-size: inherit;
@@ -33,6 +39,10 @@
             outline: none;
             width: 100%;
             background-color: var(--color-grey-light-3);
+        
+            @media only screen and (max-width: $bp-smallest) {
+                width: 95%;
+            }
         }
 
         &::-webkit-input-placeholder {
@@ -198,6 +208,11 @@
             justify-content: center; // Remember: it needs 'display: flex' for this property to work
             padding: 2rem;
         }
+
+        @media only screen and (max-width: $bp-small) {
+            flex-direction: column;
+            padding: 1.5rem .5rem;
+        }
     }
 
     &__icon {
@@ -205,6 +220,13 @@
         height: 1.75rem;
         margin-right: 2rem;
         fill: currentColor; //'currentColor' means the color of the parent element(the link in this case) is inherited. Supported in all browsers :D
+    
+        @media only screen and (max-width: $bp-small) {
+            margin-right: 0;
+            margin-bottom: .5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
 }
 
@@ -245,6 +267,11 @@
         text-transform: uppercase;
         letter-spacing: .1rem;
         padding: 1.5rem 3rem;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.8rem;
+            padding: 1.25rem 2rem;
+        }
     }
 
     &__stars {
@@ -283,17 +310,29 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        @media only screen and (max-width: $bp-small) {
+            padding: 0 1.5rem;
+        }
     }
 
     &__rating-average {
         font-size: 2.25rem;
         font-weight: 300;
         margin-bottom: -.3rem;
+
+        @media only screen and (max-width: $bp-small) {
+           font-size: 1.5rem;
+        }
     }
 
     &__rating-count {
         font-size: .8rem;
         text-transform: uppercase;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: .5rem;
+        }
     }
 }
 
@@ -363,17 +402,19 @@
         margin-right: .7rem;
 
         // For older browsers! Can't change color of the icon here
-        //background-image: url(../img/SVG/chevron-right.svg);
-        //background-size: cover;
+        background-image: url(../img/SVG/chevron-right.svg);
+        background-size: cover;
 
-        // For new browsers - masks
-        background-color: var(--color-primary); // set background color
-        // then add the icon as a mask, almost like clipping
-        -webkit-mask-image: url(../img/SVG/chevron-right.svg);
-        mask-image: url(../img/SVG/chevron-right.svg);
-        -webkit-mask-size: cover;
-        mask-size: cover; // fill the space with size readjustment of the icon
-
+         // For new browsers - masks
+        @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+            background-image: none;
+            background-color: var(--color-primary); // set background color
+            // then add the icon as a mask, almost like clipping
+            -webkit-mask-image: url(../img/SVG/chevron-right.svg);
+            mask-image: url(../img/SVG/chevron-right.svg);
+            -webkit-mask-size: cover;
+            mask-size: cover; // fill the space with size readjustment of the icon
+        }
     }
 }
 
