@@ -26,6 +26,7 @@ Grey dark 3: #999
   --color-grey-dark-1: #333;
   --color-grey-dark-2: #777;
   --color-grey-dark-3: #999;
+  --color-green: rgb(12, 200, 12);
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, .06);
   --line: 1px solid var(--color-grey-light-2); }
@@ -107,6 +108,7 @@ body {
     fill: var(--color-grey-dark-2); }
 
 .user-nav {
+  position: relative;
   align-self: stretch;
   display: flex;
   align-items: center; }
@@ -118,8 +120,6 @@ body {
     align-items: center; }
     .user-nav > *:hover {
       background-color: var(--color-grey-light-2); }
-  .user-nav__icon-box {
-    position: relative; }
   .user-nav__icon {
     height: 2.25rem;
     width: 2.25rem;
@@ -131,9 +131,8 @@ body {
     border-radius: 50%;
     background-color: var(--color-primary);
     color: #fff;
-    position: absolute;
-    top: 1.5rem;
-    right: 1.1rem;
+    margin-left: -.5rem;
+    margin-bottom: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center; }
@@ -143,29 +142,56 @@ body {
     margin-right: 1rem; }
   .user-nav__user {
     position: relative; }
-  .user-nav__settings {
+  .user-nav__user-name, .user-nav__settings-link {
+    color: var(--color-grey-dark-2);
+    text-decoration: none;
+    outline: none; }
+  .user-nav__settings-link {
+    margin-left: 1.2rem; }
+  .user-nav__hidden-list {
     position: absolute;
     top: 7rem;
     left: 0;
-    width: 100%;
     height: 0;
     list-style: none;
     flex-direction: column;
     transform: scaleY(0);
-    transition: all .4s; }
-  .user-nav__user:hover .user-nav__settings {
+    transition: all .4s;
+    width: 100%; }
+  .user-nav__user:hover .user-nav__hidden-list,
+  .chat:hover .user-nav__hidden-list,
+  .user-nav__user-name:focus + .user-nav__hidden-list,
+  .user-nav__user-name:active + .user-nav__hidden-list {
     transform: scaleY(1);
     transform-origin: top; }
-  .user-nav__settings-option {
+  .user-nav__hidden-list-item {
+    position: relative;
     padding: 2rem;
     text-align: center;
-    font-size: 1.5rem;
-    background: #fff; }
-    .user-nav__settings-option:hover {
+    font-size: 1.2rem;
+    background: #fff;
+    border-bottom: var(--line);
+    display: flex; }
+    .user-nav__hidden-list-item:hover {
       background-color: var(--color-grey-light-2); }
-  .user-nav__settings-link:link, .user-nav__settings-link:visited {
-    color: var(--color-grey-dark-2);
-    text-decoration: none; }
+  .user-nav__hidden-list--full-size {
+    padding: 0;
+    align-items: stretch; }
+  .user-nav__hidden-list-item--chat-notification {
+    text-align: left;
+    display: flex; }
+  .user-nav__chat-box {
+    margin-left: 1rem; }
+  .user-nav__user-available {
+    position: absolute;
+    background: var(--color-grey-light-4);
+    width: .9rem;
+    height: .9rem;
+    border-radius: 50%;
+    right: 2rem;
+    top: 40%; }
+  .user-nav__user-available--online {
+    background: var(--color-green); }
 
 .side-nav {
   font-size: 1.4rem;

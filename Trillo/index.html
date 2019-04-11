@@ -34,21 +34,62 @@
                     </svg>
                     <span class="user-nav__notification">7</span>
                 </div>
-                <div class="user-nav__icon-box">
+
+                <div class="user-nav__icon-box chat">
                     <svg class="user-nav__icon">
                         <use xlink:href="img/sprite.svg#icon-chat"></use>
                     </svg>
-                    <span class="user-nav__notification">30</span>
+                    <span class="user-nav__notification">2</span>
+                    <ol class="user-nav__hidden-list user-nav__hidden-list--full-size">
+                        <li class="user-nav__hidden-list-item user-nav__hidden-list-item--chat-notification">
+                            <img src="img/user-3.jpg" alt="User photo"
+                                class="user-nav__user-photo user-nav__user-photo--chat">
+                            <div class="user-nav__chat-box">
+                                <p class="review__user-name">Thomas Henry</p>
+                                <p class="review__user-date">Lorem ipsum dolor sit amet...</p>
+                            </div>
+                            <span class="user-nav__user-available  user-nav__user-available--online">&emsp;</span>
+                        </li>
+                        <li class="user-nav__hidden-list-item user-nav__hidden-list-item--chat-notification">
+                            <img src="img/user-4.jpg" alt="User photo"
+                                class="user-nav__user-photo user-nav__user-photo--chat">
+                            <div class="user-nav__chat-box">
+                                <p class="review__user-name">Douglas Stanfford</p>
+                                <p class="review__user-date">Eniam optio quis! Neq ?</p>
+                            </div>
+                            <span class="user-nav__user-available">&emsp;</span>
+                        </li>
+                    </ol>
+
                 </div>
+
                 <div class="user-nav__user">
                     <img src="img/user-2.jpg" alt="User photo" class="user-nav__user-photo">
-                    <span class="user-nav__user-name">Alice</span>
+                    <a href="#" class="user-nav__user-name">Alice</a href="#"">
 
-                    <ol class="user-nav__settings">
-                        <li class="user-nav__settings-option"><a href="#" class="user-nav__settings-link">Profile</a></li>
-                        <li class="user-nav__settings-option"><a href="#" class="user-nav__settings-link">Settings</a></li>
-                        <li class="user-nav__settings-option"><a href="#" class="user-nav__settings-link">Logout</a></li>
+
+                    <ol class=" user-nav__hidden-list">
+                    <li class="user-nav__hidden-list-item">
+                        <svg class="user-nav__icon">
+                            <use xlink:href="img/sprite.svg#icon-user"></use>
+                        </svg>
+                        <a href="#" class="user-nav__settings-link">Profile</a>
+                    </li>
+                    <li class="user-nav__hidden-list-item">
+                        <svg class="user-nav__icon">
+                            <use xlink:href="img/sprite.svg#icon-cog"></use>
+                        </svg>
+                        <a href="#" class="user-nav__settings-link">Settings</a>
+                    </li>
+                    <li class="user-nav__hidden-list-item">
+                        <svg class="user-nav__icon">
+                            <use xlink:href="img/sprite.svg#icon-log-out"></use>
+                        </svg>
+                        <a href="#" class="user-nav__settings-link">Logout</a>
+                    </li>
                     </ol>
+
+
                 </div>
             </nav>
         </header>
