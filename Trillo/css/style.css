@@ -63,6 +63,7 @@ body {
   margin-left: 2rem; }
 
 .search {
+  position: relative;
   flex: 0 0 40%;
   display: flex;
   justify-content: center;
@@ -106,6 +107,29 @@ body {
     height: 2rem;
     width: 2rem;
     fill: var(--color-grey-dark-2); }
+  .search__list {
+    position: absolute;
+    top: 3.2rem;
+    left: 2rem;
+    background: #fff;
+    width: 95%;
+    height: 10rem;
+    list-style: none;
+    overflow: auto;
+    display: none; }
+  .search__input:focus ~ .search__list {
+    display: block;
+    z-index: 10; }
+  .search__list-item {
+    padding: 1.2rem 3rem;
+    border-bottom: var(--line);
+    cursor: pointer; }
+    .search__list-item:hover {
+      background-color: var(--color-grey-light-2); }
+  .search__link {
+    text-decoration: none;
+    outline: none;
+    color: var(--color-grey-dark-3); }
 
 .user-nav {
   position: relative;
@@ -156,8 +180,9 @@ body {
     list-style: none;
     flex-direction: column;
     transform: scaleY(0);
-    transition: all .4s;
-    width: 100%; }
+    transition: all .2s;
+    width: 100%;
+    z-index: 10; }
   .user-nav__user:hover .user-nav__hidden-list,
   .chat:hover .user-nav__hidden-list,
   .user-nav__user-name:focus + .user-nav__hidden-list,
@@ -177,6 +202,9 @@ body {
   .user-nav__hidden-list--full-size {
     padding: 0;
     align-items: stretch; }
+  .user-nav__hidden-list--centralized {
+    justify-content: center;
+    padding: .6rem; }
   .user-nav__hidden-list-item--chat-notification {
     text-align: left;
     display: flex; }
@@ -267,10 +295,24 @@ body {
       display: none; } }
 
 .gallery {
-  display: flex; }
+  display: flex;
+  overflow: hidden;
+  transition: all .5s;
+  z-index: 1; }
   .gallery__photo {
     width: 100%;
-    display: block; }
+    display: block;
+    transform: scale(1.5);
+    transition: inherit;
+    filter: brightness(0.9); }
+    .gallery__photo:hover {
+      transform: scale(1);
+      filter: brightness(1); }
+  .gallery__item {
+    overflow: hidden;
+    transition: inherit; }
+  .gallery:hover .gallery__item:not(:hover) {
+    filter: brightness(0.25) blur(0.1px); }
 
 .overview {
   display: flex;
@@ -348,6 +390,9 @@ body {
   .btn-inline:focus {
     outline: none;
     animation: pulsate 1s infinite; }
+  .btn-inline--no-effect:focus {
+    outline: 1px;
+    animation: none; }
 
 .paragraph:not(:last-of-type) {
   margin-bottom: 2rem; }

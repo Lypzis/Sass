@@ -10,6 +10,7 @@
 ////////////////////////////////////////////
 // SEARCH
 .search {
+    position: relative;
     flex: 0 0 40%;
 
     // flex item becomes a flex container, becoming a nested flex-box
@@ -72,6 +73,42 @@
         height: 2rem;
         width: 2rem;
         fill: var(--color-grey-dark-2)
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    // CHALLENGE #3 - Display a box with search susgestion as soon as the user starts 
+    // typing in the seach input
+    &__list {
+        position: absolute;
+        top: 3.2rem;
+        left: 2rem;
+        background: #fff;
+        width: 95%;
+        height: 10rem;
+        list-style: none;
+        overflow: auto;
+        display: none;
+    }
+
+    &__input:focus ~ &__list {
+        display: block;
+        z-index: 10;
+    }
+
+    &__list-item {
+        padding: 1.2rem 3rem;
+        border-bottom: var(--line);
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--color-grey-light-2);
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        outline: none;
+        color: var(--color-grey-dark-3);
     }
 }
 
@@ -155,8 +192,9 @@
         list-style: none;
         flex-direction: column;
         transform: scaleY(0);
-        transition: all .4s;
+        transition: all .2s;
         width: 100%;
+        z-index: 10;
     }
 
     // nav remains open if user-name is active or focused, or being hovered
@@ -191,6 +229,11 @@
         align-items: stretch; 
     }
 
+    &__hidden-list--centralized { 
+        justify-content: center;
+        padding: .6rem;
+    }
+
     &__hidden-list-item--chat-notification {
         text-align: left;
         display: flex;
@@ -213,6 +256,8 @@
     &__user-available--online {
         background: var(--color-green);
     }
+
+
     ///////////////////////////////////////////////////////////////////////////////////////////////
 }
 
@@ -330,11 +375,39 @@
 // GALLERY
 .gallery {
     display: flex;
+    overflow: hidden;
+    transition: all .5s;
+    z-index: 1;
 
     &__photo {
         width: 100%;
         display: block; // will make sure that there is no small "white" space below the image
+
+        //////////////////////////////
+        //part of challenge #4
+        transform: scale(1.5); 
+        transition: inherit;
+        filter: brightness(.9);
+
+        &:hover {
+            transform: scale(1);
+            filter: brightness(1);
+        }
+            
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    // CHALLENGE #4 - Create a caption for the ".gallery__item" with a nice hover effect 
+    &__item {
+        overflow: hidden;
+        transition: inherit;
+    }
+
+    // when the gallery is on hover, items not on hover will be affected
+    &:hover &__item:not(:hover){
+        filter: brightness(.25) blur(.1px);
+    }
+
 }
 
 ////////////////////////////////////////////
@@ -450,6 +523,13 @@
     &:focus {
         outline: none; // removes outline, for accessibity reasons it must be replaced after being removed.
         animation: pulsate 1s infinite; // infinite animation while button is focused
+    }
+
+    &--no-effect {
+        &:focus {
+            outline: 1px;
+            animation: none;
+        }
     }
 }
 
