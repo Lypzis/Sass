@@ -1,0 +1,4 @@
+.footer {
+    background-color: $color-secondary;
+    grid-column: full-start / full-end; // check '_base.scss' in case of doubt
+}

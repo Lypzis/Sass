@@ -13,3 +13,45 @@ $color-grey-dark-2: #6D5D4B;
 // FONT VARIABLES
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; 
+}
+
+body {
+    font-family: $font-primary;
+    color: $color-grey-dark-2;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content); // remember, as 'min-content', the section will have the size of its content,
+                                                                      // vw is for column responsiveness,
+                                                                      // vh is good for row responsiveness
+
+    // 1 column of fixed 80px and 8 columns of maximum size of 14rem
+    // and minimum size defined by its content.
+    // the 'minmax(6rem, 1fr) ' is used as a "column margin" which occupies
+    // the remaining space and will shrink first when the width decreases
+    grid-template-columns: 
+        [sidebar-start] 
+            8rem 
+        [sidebar-end full-start] 
+            minmax(6rem, 1fr) 
+            [center-start] 
+                repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) 
+            [center-end] 
+            minmax(6rem, 1fr)
+        [full-end]; // area names -> [...], which can be used as reference for setting area column/row space
+}
