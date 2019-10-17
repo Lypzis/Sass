@@ -2,10 +2,56 @@
     &__pictures {
         background-color: $color-primary;
         grid-column: full-start / col-end 4;
+
+        // background with an ovarlay of the main color, to look consistent
+        background-image: linear-gradient(rgba($color-primary, .5), rgba($color-primary, .5)), url(../img/back.jpg);
+
+        display: grid;
+        // a nice 6x6 grid
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-columns: repeat(6, 1fr);
+
+        align-items: center; // aligns images to the center of their respective area
+    }
+
+    &__image--1 { // REMEMBER: images keep their aspect ratio, so they might not cover the entire area
+        width: 100%;
+        grid-row: 2 / 6; // it will cover the rows from 2 to 6
+        grid-column: 2 / 6; // it will cover columns from 2 to 6
+        box-shadow: 0 2rem 5rem rgba(0, 0, 0, .1);
+    }
+
+    &__image--2 {
+        width: 115%; // a little bigger on purpose for it to overlap.
+        grid-row: 4 / 6;
+        grid-column: 4 / 7;
+        z-index: 10; // so we can see the part which will get behind the "white" cell
+        box-shadow: 0 2rem 5rem rgba(0, 0, 0, .2);
     }
 
     &__content {
         background-color: $color-grey-light-1;
         grid-column: col-start 5 / full-end;
+
+        padding: 6rem 8vw; // 'vw' is more responsive than hard-coding let's say: '12rem', which is a constant value
+
+        // using flex is better in  this case, because it is one-dimensional
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        // but grid can of course be used as well, though, it is not a good practice
+        /*
+        display: grid;
+        align-content: center;
+        justify-items: flex-start;
+        */
+    }
+
+    &__text {
+        font-size: 1.5rem;
+        font-style: italic;
+        margin-bottom: 4rem; // "__text" is not reusable, so the margin is set here in this case
     }
 }
