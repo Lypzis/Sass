@@ -1,4 +1,41 @@
 .features {
-    background-color: $color-grey-light-2;
     grid-column: center-start / center-end; // check '_base.scss' in case of doubt
+
+    margin: 15rem 0;
+
+    // grid inside of grid, just like flexbox :D
+    display: grid;
+
+    //grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // becomes responsive, simple as that ;D
+
+    gap: 6rem; // gap between rows and columns
+
+    align-items: flex-start; // everything aligned correctly to the start of the grid cell :D
+}
+
+.feature {
+
+    display: grid;
+
+    // first column is min-content=icon size; second column just ocupy the rest
+    grid-template-columns: min-content 1fr;
+
+    gap: 1.5rem 2.5rem; // respectively row-gap column-gap
+
+    &__icon {
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+
+        // makes icon expand to secon row, pushing text to the second column.
+        grid-row: 1 / span 2; // -1 can't be used here, because it only means the end an explicit row,
+                              // in this case there is no 'grid-template-rows' declaration;
+
+        transform: translateY(-1rem); // just a minor icon relocation
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
 }
