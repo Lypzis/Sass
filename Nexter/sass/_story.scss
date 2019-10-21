@@ -6,12 +6,21 @@
         // background with an ovarlay of the main color, to look consistent
         background-image: linear-gradient(rgba($color-primary, .5), rgba($color-primary, .5)), url(../img/back.jpg);
 
+        background-size: cover;
+
         display: grid;
         // a nice 6x6 grid
         grid-template-rows: repeat(6, 1fr);
         grid-template-columns: repeat(6, 1fr);
 
         align-items: center; // aligns images to the center of their respective area
+    
+        // Goes all the way to the end,
+        // add 3rem padding to not stay touching the border of the page
+        @media only screen and (max-width: $bp-medium) {
+            grid-column: full-start / full-end;
+            padding: 3rem;
+        }
     }
 
     &__image--1 { // REMEMBER: images keep their aspect ratio, so they might not cover the entire area
@@ -19,6 +28,11 @@
         grid-row: 2 / 6; // it will cover the rows from 2 to 6
         grid-column: 2 / 6; // it will cover columns from 2 to 6
         box-shadow: 0 2rem 5rem rgba(0, 0, 0, .1);
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-column: 1 / 5;
+            grid-row: 1 / -1;
+        }
     }
 
     &__image--2 {
@@ -27,6 +41,11 @@
         grid-column: 4 / 7;
         z-index: 10; // so we can see the part which will get behind the "white" cell
         box-shadow: 0 2rem 5rem rgba(0, 0, 0, .2);
+    
+        @media only screen and (max-width: $bp-medium) {
+            grid-row: 1 / -1;
+            width: 100%;
+        }
     }
 
     &__content {
@@ -47,6 +66,13 @@
         align-content: center;
         justify-items: flex-start;
         */
+
+        // Goes all the way to the end,
+        // and before before images
+        @media only screen and (max-width: $bp-medium) {
+            grid-column: full-start / full-end;
+            grid-row: 5 / 6;
+        }
     }
 
     &__text {

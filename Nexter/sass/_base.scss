@@ -14,6 +14,12 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em; // 1200px/16px
+$bp-large: 62.5rem; // 1000px/16px
+$bp-medium: 50em; // 800px/16px
+$bp-small: 37.5em; // 600px/16px
+
 *,
 *::before,
 *::after {
@@ -25,6 +31,13 @@ $font-display: 'Josefin Sans', sans-serif;
 html {
     box-sizing: border-box;
     font-size: 62.5%; 
+
+    // lowering font-size at the 1200px breakpoint,
+    // also remember that the font-size is primary concern 
+    // when writing media queries because it influences a lot
+    @media only screen and (max-width: $bp-largest) {
+        font-size: 50%;
+    }
 }
 
 body {
@@ -54,4 +67,28 @@ body {
             [center-end] 
             minmax(6rem, 1fr)
         [full-end]; // area names -> [...], which can be used as reference for setting area column/row space
+
+    // at 1000px, remove side-bar column and replace it for a row
+    // IMPORTANT NOTE: this shows the importance of naming columns,
+    // because, without naming it, it would be necessary to rewrite 
+    // everything else, since the number of rows and columns are different now.
+    @media only screen and (max-width: $bp-large) {
+        grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content); 
+        grid-template-columns: 
+            [full-start] 
+                minmax(6rem, 1fr) 
+                [center-start] 
+                    repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) 
+                [center-end] 
+                minmax(6rem, 1fr)
+            [full-end];
+    }
+
+    // adding one more row for 'realtors' and header to '100vh'(entire viewport)
+    // minus '6rem' of the side-bar, so the section fits perfectly '100vh'
+    // chages '40vw' to min-content, so, the last repeat changes to 'repeat(6, min-content);' 
+    // or simply remove it, it will get set automatically
+    @media only screen and (max-width: $bp-medium) {
+        grid-template-rows: 6rem calc(100vh - 6rem); // at end, the only two customized rows are are the first and second
+    }
 }

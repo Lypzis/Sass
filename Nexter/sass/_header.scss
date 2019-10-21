@@ -1,3 +1,4 @@
+// minmax solves most of the @media size issues :D 
 .header {
     background-color: $color-grey-dark-1;
     grid-column: full-start / col-end 6; // check '_base.scss' in case of doubt
@@ -8,11 +9,19 @@
     padding-top: 4rem;
 
     display: grid;
-    grid-template-rows: 1fr min-content 6rem 1fr; // one '1fr' push every other row affar, because it fills the available space, remember
-                                             // the row with '6rem' creates more space below which is an ideal "margin" without adding margin :D    
-    grid-template-columns: max-content; // a column with the max available space required to fit the content
+    grid-template-rows: 1fr min-content minmax(min-content, 6rem) 1fr; // one '1fr' push every other row affar, because it fills the available space, remember
+                                             // the row with '6rem' creates more space below which is an ideal "margin" without adding margin :D, otherwise fits its min-content which is ideally responsive    
+    grid-template-columns: minmax(min-content, max-content); // a column with the max available space required to fit the content, but never smaller
     row-gap: 1.5rem;
     justify-content: center;
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: full-start / full-end; // or 1 / -1
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        padding: 5rem;
+    }
 
     &__logo {
         height: 3rem;
@@ -47,9 +56,11 @@
         grid-template-columns: repeat(4, 1fr);
         column-gap: 3rem;
         justify-items: center;
+        align-items: center;
 
         img {
-            height: 2.5rem;
+            max-height: 2.5rem; // the 'max-height' can be '2.5rem', but it can be less
+            max-width: 100%;
             filter: brightness(.7);
         }
     }
